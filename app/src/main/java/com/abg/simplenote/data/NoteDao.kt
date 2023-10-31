@@ -1,4 +1,4 @@
-package com.abg.simplenote
+package com.abg.simplenote.data
 
 import androidx.room.Dao
 import androidx.room.Delete
@@ -16,10 +16,10 @@ interface NoteDao {
     fun update(note: Note)
 
     @Delete
-    fun delete(note: Note)
+    suspend fun delete(note: Note)
 
     @Query("SELECT * FROM notes ORDER BY id DESC")
-    fun getAll() : List<Note>
+    suspend fun getAll() : List<Note>
 
     @Query("SELECT * FROM notes WHERE id = :id")
     fun getById(id: Int) : List<Note>
